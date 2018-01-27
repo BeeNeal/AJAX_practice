@@ -1,6 +1,7 @@
 "use strict";
 
 
+
 // PART 1: SHOW A FORTUNE
 
 // function showFortune(results) {
@@ -29,24 +30,18 @@ $('#get-fortune-button').on('click', function (evt) {
 });
 
 
-
-
-
-
 // PART 2: SHOW WEATHER
 
 function showWeather(evt) {
     evt.preventDefault();
 
+
     let url = "/weather.json";
     let formData = {"zipcode": $("#zipcode-field").val()};
 
-    $.post(url, formData, function (weather_results) {
-        let weather = weather_results["forecast"];
-        console.log(weather);
-        $('#weather-info').html(weather);
+    $.get(url, formData, function (weather_results) {
+        $('#weather-info').html(weather_results.forecast);
     });
-
 
     // TODO: request weather with that URL and show the forecast in #weather-info
 }
